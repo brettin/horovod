@@ -845,8 +845,9 @@ void PerformOperation(TensorTable& tensor_table, MPIResponse response) {
                    ncclCommInitRank(&nccl_comm, horovod_global.size, nccl_id,
                                     horovod_global.rank))
 
-        // TODO: Rohit (NVIDIA): figure out why we need this sleep
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        // Barrier helps NCCL to synchronize after initialization and avoid
+        // deadlock that we've been seeing without it.
+        MPI_CHECK(entries, "MPI_Barrier", MPI_Barrier(MPI_COMM_WORLD));
 
         ACTIVITY_END_ALL(entries, timeline)
       }
