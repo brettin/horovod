@@ -24,6 +24,6 @@ source activate $CONDA_ENV
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo $DIR
 
-srun $DIR/keras_mnist.sh
+srun $DIR/keras_mnist_cori.sh
 
 source deactivate
