@@ -13,6 +13,7 @@ source activate horovod-tf2
 
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR=/global/homes/b/brettin/hackathon1710/docs/horovod/examples
 echo $DIR
 
 export OMP_NUM_THREADS=136
