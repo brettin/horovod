@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+HOST="$( hostname )"
 USER="$( whoami )"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo $HOST
 echo $USER
 echo $DIR
 
 function_to_fork() {
-  top -b -n 60 -d 60 -u $USER > $COBALT_JOBID.$$.top
+  top -b -n 60 -d 60 -u $USER > $COBALT_JOBID.$HOST.$$.top
 }
 function_to_fork &
 
